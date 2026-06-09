@@ -19,6 +19,11 @@
       "name": "Chevrolet Silverado",
       "cost": 1400,
       "id": 4
+    },
+    {
+      "name": "Dodge Ram",
+      "cost": 1700,
+      "id": 5
     }
   ]
 }

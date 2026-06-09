@@ -1,8 +1,13 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const selectCars = (state) => state.cars.cars;
-const selectFilterTerm = (state) => state.filter.filterTerm;
+// Selectors
+export const selectCars = (state) => state.cars.cars;
+export const selectCarsLoading = (state) => state.cars.loading;
+export const selectCarsError = (state) => state.cars.error;
 
+export const selectFilterTerm = (state) => state.filter.filterTerm;
+
+//Derived selectors
 export const selectFilteredCars = createSelector(
   [selectCars, selectFilterTerm],
   (cars, filterTerm) => {
@@ -12,5 +17,6 @@ export const selectFilteredCars = createSelector(
   },
 );
 
-export const selectCarsLoading = (state) => state.cars.loading;
-export const selectCarsError = (state) => state.cars.error;
+export const selectTotalCost = createSelector([selectFilteredCars], (cars) => {
+  return cars.reduce((total, car) => total + car.cost, 0);
+});
