@@ -1,14 +1,18 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCars } from "../features/cars/carsSlice";
 
 function CarList() {
-  /* Temporary values to allow the application to load. These should be replaced. */
-  let isLoadingCars = false;
-  let loadingCarsError = false;
-  let cars = [];
+  const dispatch = useDispatch();
+
+  const cars = useSelector((state) => state.cars.cars);
+  const isLoadingCars = useSelector((state) => state.cars.loading);
+  const loadingCarsError = useSelector((state) => state.cars.error);
 
   useEffect(() => {
     /* Load the list of cars from the API */
-  }, []);
+    dispatch(fetchCars());
+  }, [dispatch]);
 
   /* Implement the delete functionality here */
   const handleCarDelete = (car) => {};
