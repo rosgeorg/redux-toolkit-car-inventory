@@ -1,0 +1,14 @@
+{
+  "cars": [
+    {
+      "name": "Toyota Prius Prime",
+      "cost": 1000,
+      "id": 1
+    },
+    {
+      "name": "Honda CRV",
+      "cost": 500,
+      "id": 2
+    }
+  ]
+}
