@@ -1,6 +1,15 @@
+import { useDispatch, useSelector } from "react-redux";
+import { changeFilterTerm } from "../features/filter/filterSlice";
+import { selectFilterTerm } from "../features/filter/selectors";
+
 function CarFilter() {
+  const dispatch = useDispatch();
+  const filterTerm = useSelector(selectFilterTerm);
+
   /* Implement the filter change in this function */
-  const handleFilterChange = (event) => {};
+  const handleFilterChange = (event) => {
+    dispatch(changeFilterTerm(event.target.value));
+  };
 
   return (
     <div className="list-header">
@@ -9,7 +18,7 @@ function CarFilter() {
         <label className="label">Filter</label>
         <input
           className="input"
-          /* value={filterTerm} */
+          value={filterTerm}
           onChange={handleFilterChange}
         />
       </div>

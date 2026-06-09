@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars, deleteCar } from "../features/cars/carsSlice";
+import {
+  selectFilteredCars,
+  selectCarsError,
+  selectCarsLoading,
+} from "../features/cars/selectors";
 
 function CarList() {
   const dispatch = useDispatch();
 
-  const cars = useSelector((state) => state.cars.cars);
-  const isLoadingCars = useSelector((state) => state.cars.loading);
-  const loadingCarsError = useSelector((state) => state.cars.error);
+  const cars = useSelector(selectFilteredCars);
+  const isLoadingCars = useSelector(selectCarsLoading);
+  const loadingCarsError = useSelector(selectCarsError);
 
   useEffect(() => {
     /* Load the list of cars from the API */
