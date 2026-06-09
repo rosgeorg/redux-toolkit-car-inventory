@@ -1,8 +1,33 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createCar } from "../features/cars/carsSlice";
+
 function CarForm() {
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const [cost, setCost] = useState("");
+
   /* Implement the name, cost, and submit changes in these functions */
-  const handleNameChange = (event) => {};
-  const handleCostChange = (event) => {};
-  const handleSubmit = (event) => {};
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleCostChange = (event) => {
+    setCost(event.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch(
+      createCar({
+        name,
+        cost: Number(cost),
+      }),
+    );
+
+    setName("");
+    setCost("");
+  };
 
   return (
     <div className="car-form panel">
@@ -13,7 +38,7 @@ function CarForm() {
             <label className="label">Name</label>
             <input
               className="input is-expanded"
-              /* value={name} */
+              value={name}
               onChange={handleNameChange}
             />
           </div>
@@ -22,7 +47,7 @@ function CarForm() {
             <label className="label">Cost</label>
             <input
               className="input is-expanded"
-              /* value={cost || ""} */
+              value={cost || ""}
               onChange={handleCostChange}
               type="number"
             />
