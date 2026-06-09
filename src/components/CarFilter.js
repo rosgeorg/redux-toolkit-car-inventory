@@ -15,8 +15,11 @@ function CarFilter() {
     <div className="list-header">
       <h3 className="title is-3">My Cars</h3>
       <div className="filter field is-horizontal">
-        <label className="label">Filter</label>
+        <label className="label" htmlFor="filter-term">
+          Filter
+        </label>
         <input
+          id="filter-term"
           className="input"
           value={filterTerm}
           onChange={handleFilterChange}
