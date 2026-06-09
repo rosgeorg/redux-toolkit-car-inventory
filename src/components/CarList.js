@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../features/cars/carsSlice";
+import { fetchCars, deleteCar } from "../features/cars/carsSlice";
 
 function CarList() {
   const dispatch = useDispatch();
@@ -15,7 +15,9 @@ function CarList() {
   }, [dispatch]);
 
   /* Implement the delete functionality here */
-  const handleCarDelete = (car) => {};
+  const handleCarDelete = (car) => {
+    dispatch(deleteCar(car));
+  };
 
   let content;
   if (isLoadingCars) {

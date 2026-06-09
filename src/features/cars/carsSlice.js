@@ -26,6 +26,18 @@ export const createCar = createAsyncThunk("cars/createCar", async (car) => {
   return response.json();
 });
 
+export const deleteCar = createAsyncThunk("cars/deleteCar", async (car) => {
+  const response = await fetch(`http://localhost:3005/cars/${car.id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete car");
+  }
+
+  return car;
+});
+
 const carsSlice = createSlice({
   name: "cars",
   initialState: {
@@ -50,6 +62,11 @@ const carsSlice = createSlice({
       })
       .addCase(createCar.fulfilled, (state, action) => {
         state.cars.push(action.payload);
+      })
+      .addCase(deleteCar.fulfilled, (state, action) => {
+        state.cars = state.cars.filter((car) => {
+          return car.id !== action.payload.id;
+        });
       });
   },
 });
