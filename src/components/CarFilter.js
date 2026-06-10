@@ -6,7 +6,6 @@ function CarFilter() {
   const dispatch = useDispatch();
   const filterTerm = useSelector(selectFilterTerm);
 
-  /* Implement the filter change in this function */
   const handleFilterChange = (event) => {
     dispatch(changeFilterTerm(event.target.value));
   };

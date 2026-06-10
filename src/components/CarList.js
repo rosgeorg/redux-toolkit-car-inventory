@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { formatCurrency } from "../utils/formatCurrency";
 import { fetchCars, deleteCar } from "../features/cars/carsSlice";
 import {
   selectFilteredCars,
@@ -19,7 +20,6 @@ function CarList() {
     dispatch(fetchCars());
   }, [dispatch]);
 
-  /* Implement the delete functionality here */
   const handleCarDelete = (car) => {
     dispatch(deleteCar(car));
   };
@@ -34,7 +34,7 @@ function CarList() {
       return (
         <div key={car.id} className="panel">
           <p>
-            {car.name} - ${car.cost}
+            {car.name} - {formatCurrency(car.cost)}
           </p>
           <button
             className="button is-danger"

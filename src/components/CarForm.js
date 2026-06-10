@@ -8,7 +8,6 @@ function CarForm() {
   const [name, setName] = useState("");
   const [cost, setCost] = useState("");
 
-  /* Implement the name, cost, and submit changes in these functions */
   const handleNameChange = (event) => {
     setName(event.target.value);
   };

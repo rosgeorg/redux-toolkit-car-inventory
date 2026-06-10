@@ -10,7 +10,6 @@ import { store } from "./app/store";
 const el = document.querySelector("#root");
 const root = createRoot(el);
 
-/* Implement Redux store here */
 root.render(
   <Provider store={store}>
     <App />
