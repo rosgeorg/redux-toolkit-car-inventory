@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+const BASE_URL = "http://localhost:3005/cars";
+
 export const fetchCars = createAsyncThunk("cars/fetchCars", async () => {
-  const response = await fetch("http://localhost:3005/cars");
+  const response = await fetch(BASE_URL);
 
   if (!response.ok) {
     throw new Error("Failed to fetch cars");
@@ -11,7 +13,7 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async () => {
 });
 
 export const createCar = createAsyncThunk("cars/createCar", async (car) => {
-  const response = await fetch("http://localhost:3005/cars", {
+  const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,7 +29,7 @@ export const createCar = createAsyncThunk("cars/createCar", async (car) => {
 });
 
 export const deleteCar = createAsyncThunk("cars/deleteCar", async (car) => {
-  const response = await fetch(`http://localhost:3005/cars/${car.id}`, {
+  const response = await fetch(`${BASE_URL}/${car.id}`, {
     method: "DELETE",
   });
 
